@@ -1,0 +1,22 @@
+syntax = "proto3";
+option go_package = "sysmon/proto/sysmonpb";
+package sysmonpb;
+
+import "google/api/annotations.proto";
+
+message PingRequest {
+
+}
+
+message PingResponse {
+  string body                                          = 1;
+}
+
+service SysmonService {
+  rpc Ping(PingRequest) returns (PingResponse) {
+    option (google.api.http) = {
+      get: "/api/v1/ping"
+      response_body: "body"
+    };
+  }
+}
