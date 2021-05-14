@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"github.com/grpc-ecosystem/grpc-gateway/v2/runtime"
 	"google.golang.org/grpc"
-	"io/fs"
 	"net"
 	"net/http"
 	"strings"
@@ -42,13 +41,12 @@ func RESTStart(conn *grpc.ClientConn, port int) (int, error) {
 		return 0, err
 	}
 
-	filesystem := fs.FS(build.WWW)
-	child, err := fs.Sub(filesystem, "build")
+	filesystem, err := build.GetFS()
 	if nil != err {
 		return 0, err
 	}
 	var (
-		web      = http.FileServer(http.FS(child))
+		web      = http.FileServer(http.FS(filesystem))
 		handlers = http.NewServeMux()
 	)
 	handlers.HandleFunc("/", func(writer http.ResponseWriter, request *http.Request) {
