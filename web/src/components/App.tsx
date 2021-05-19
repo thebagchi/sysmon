@@ -6,9 +6,9 @@ import {
     Nav, NavItem, NavList,
     Page, PageHeader, PageSidebar
 } from "@patternfly/react-core";
-import { DashboardPage }     from "./pages/dashboard-page";
-import { RoutesPage }        from "./pages/routes-page";
-import { MetricsPage }       from "./pages/metrics-page";
+import { DashboardPage }     from "./pages/DashboardPage";
+import { RoutesPage }        from "./pages/RoutesPage";
+import { MetricsPage }       from "./pages/MetricsPage";
 
 interface AppState {
     sidebarOpen: boolean;

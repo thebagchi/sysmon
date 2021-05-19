@@ -24,7 +24,7 @@ export class MetricsPage extends React.Component<MetricsPageProps, MetricsPageSt
     render() {
         console.log('Rendering metrics page ...')
         return (
-            <PageSection variant={PageSectionVariants.light}> This is metrics page</PageSection>
+            <PageSection variant={PageSectionVariants.light}> This is metrics page </PageSection>
         );
     }
 }

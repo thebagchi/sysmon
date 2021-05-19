@@ -24,7 +24,7 @@ export class RoutesPage extends React.Component<RoutesPageProps, RoutesPageState
     render() {
         console.log('Rendering routes page ...')
         return (
-            <PageSection variant={PageSectionVariants.light}> This is routes page</PageSection>
+            <PageSection variant={PageSectionVariants.light}> This is routes page </PageSection>
         );
     }
 }
