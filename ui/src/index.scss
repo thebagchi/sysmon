@@ -1,0 +1,18 @@
+// Import additional fonts
+@import "~@fontsource/roboto";
+@import "~@fontsource/roboto-mono";
+
+// Import Bootstrap icons
+@import "~bootstrap-icons/font/bootstrap-icons.css";
+
+// Import Material icons
+@import "~material-design-icons/iconfont/material-icons.css";
+
+// Override default variables before the import
+$font-family-sans-serif: "Roboto";
+$font-family-monospace: "Roboto Mono";
+
+$offcanvas-horizontal-width: 300px;
+
+// Import Bootstrap and its default variables
+@import '~bootstrap/scss/bootstrap.scss';
