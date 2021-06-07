@@ -10,7 +10,13 @@ import Hamburger from './components/Hamburger';
 import Branding from './components/Branding';
 import Dropdown from './components/Dropdown';
 import DropdownMenu from './components/DropdownMenu';
-import DropdownItem from './components/DropdownItem'
+import DropdownItem from './components/DropdownItem';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Route, Redirect, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import DashboardPage from './pages/DashboardPage';
+import RoutesPage from './pages/RoutesPage';
+import MetricsPage from './pages/MetricsPage';
 
 interface State {
   sidebarOpen: boolean;
@@ -58,6 +64,7 @@ export class App extends React.Component<Props, State> {
     const {sidebarOpen} = this.state
     return (
       <React.Fragment>
+        <Router>
         <Page>
           <Navbar>
             <div>
@@ -66,20 +73,80 @@ export class App extends React.Component<Props, State> {
             </div>
           </Navbar>
           <Sidebar visible={sidebarOpen} clickedOutside={this.hideSidebar} escapePressed={this.hideSidebar}>
+            <span className="fs-5 fw-semibold"> SMC MANAGER </span>
+            <hr></hr>
+            <ul className="nav nav-pills flex-column">
+              <li className="nav-item">
+                <NavLink to="/web/home" className="nav-link text-white" activeClassName="active">
+                  <i className="bi bi-house-door-fill mx-2"></i>
+                  Home
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/web/dashboard" className="nav-link" activeClassName="active">
+                  <i className="bi bi-speedometer2 mx-2"></i>
+                  Dashboard
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/web/orders" className="nav-link" activeClassName="active">
+                  <i className="bi bi-table mx-2"></i>
+                  Orders
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/web/products" className="nav-link" activeClassName="active">
+                  <i className="bi bi-grid mx-2"></i>
+                  Products
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/web/customers" className="nav-link" activeClassName="active">
+                  <i className="bi bi-people mx-2"></i>
+                  Customers
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/web/routes" className="nav-link" activeClassName="active">
+                  <i className="bi bi-people mx-2"></i>
+                  Routes
+                </NavLink>
+              </li>
+            </ul>
+            <hr/>
+            <ul className="nav nav-pills flex-column">
+              <li>
+                <NavLink to="/web/tester" className="nav-link" activeClassName="active">
+                  <i className="bi bi-terminal mx-2"></i>
+                  Tester
+                </NavLink>
+              </li>
+              <li>
+                <NavLink to="/web/metrics" className="nav-link" activeClassName="active">
+                  <i className="bi bi-terminal mx-2"></i>
+                  Metrics
+                </NavLink>
+              </li>
+            </ul>
           </Sidebar>
           <Content>
-            <Centered>
-              <Dropdown> 
-                <DropdownMenu>
-                  <DropdownItem clicked={(e)=>{console.log("Action - I")}}> Action - I </DropdownItem>
-                  <DropdownItem clicked={(e)=>{console.log("Action - II")}}> Action - II </DropdownItem>
-                  <DropdownItem clicked={(e)=>{console.log("Action - III")}}> Action - III </DropdownItem>
-                </DropdownMenu>
-              </Dropdown>
-              <Spinner> </Spinner>
-            </Centered>
+            <Switch>
+              <Route exact path='/web/dashboard'>
+                <DashboardPage> </DashboardPage>
+              </Route>
+              <Route exact path='/web/routes'>
+                <RoutesPage> </RoutesPage>
+              </Route>
+              <Route exact path='/web/metrics'>
+                <MetricsPage> </MetricsPage>
+              </Route>
+              <Route exact path='/'>
+                <Redirect to='/web/dashboard'> </Redirect>
+              </Route>
+            </Switch>
           </Content>
         </Page>
+        </Router>
       </React.Fragment>
     )
   }

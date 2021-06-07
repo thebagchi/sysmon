@@ -5,7 +5,7 @@ interface ContainerProps extends React.HTMLProps<HTMLDivElement> {
 }
 
 const Container: React.FunctionComponent<ContainerProps> = (props: ContainerProps) => (
-  <div className="container w-screen h-screen">
+  <div className="w-screen h-screen">
     {props.children}
   </div>
 )
